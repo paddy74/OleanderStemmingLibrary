@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.13 FATAL_ERROR)
-project(PStem VERSION 0.1 LANGUAGES CXX)
+project(PStem VERSION 0.1)
 set(PROJECT_NAME_L pstem)
 
 # -----------------------------------------------------------------------------
@@ -38,7 +38,6 @@ include(BuildType)
 
 include(ClangFormat)
 include(CodeAnalysis)
-include(CodeCoverage)
 include(CompilerFlags)
 
 # -----------------------------------------------------------------------------

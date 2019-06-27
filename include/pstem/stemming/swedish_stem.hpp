@@ -1,12 +1,3 @@
-/**@addtogroup Stemming
-@brief Library for stemming words down to their root words.
-@date 2003-2015
-@copyright Oleander Software, Ltd.
-@author Oleander Software, Ltd.
-@details This program is free software; you can redistribute it and/or modify
-it under the terms of the BSD License.
-* @{*/
-
 #ifndef __SWEDISH_STEM_H__
 #define __SWEDISH_STEM_H__
 
@@ -64,13 +55,59 @@ action indicated.
     - fullt
         - Replace with full
 */
-//------------------------------------------------------
+
+/**
+ * @class swedish_stem
+ * @brief Swedish stemmer.
+ *
+ * @tparam std::wstring
+ *
+ * @par Algorithm:
+ *      The Swedish alphabet includes the following additional letters,
+ *          - ä   å   ö
+ *      The following letters are vowels:
+ *          - a   e   i   o   u   y   ä   å   ö
+ *      R2 is not used: R1 is defined in the same way as in the German stemmer.
+ *      Define a valid s-ending as one of:
+ *          - b c d f g h j k l m n o p r t v y
+ *
+ * @par Algorithm:
+ *  <b>Step 1:</b>
+ *  Search for the longest among the following suffixes in R1, and perform the
+ *   action indicated.
+ *      - a, arna, erna, heterna, orna, ad, e, ade, ande, arne, are, aste, en,
+ *      anden, aren, heten, ern, ar, er, heter, or, as, arnas, ernas, ornas,
+ *      es, ades, andes, ens, arens, hetens, erns, at, andet, et, ast
+ *          - Delete.
+ *      - s
+ *      - Delete if preceded by a valid s-ending.
+ *  (Of course the letter of the valid s-ending is not necessarily in R1).
+ *
+ *  <b>Step 2:</b>
+ *  Search for one of the following suffixes in R1, and if found delete the
+ *   last letter.
+ *      - dd, gd, nn, dt, gt, kt, tt
+ *  (For example, friskt -> frisk, fröknarnn -> fröknarn).
+ *
+ *  <b>Step 3:</b>
+ *  Search for the longest among the following suffixes in R1, and perform the
+ *   action indicated.
+ *      - lig, ig, els
+ *          - Delete
+ *      - löst
+ *          - Replace with lös
+ *      - fullt
+ *          - Replace with full
+ */
 template <typename string_typeT = std::wstring>
 class swedish_stem : public stem<string_typeT>
 {
 public:
-    //---------------------------------------------
-    /**@param[in,out] text string to stem*/
+    /**
+     * @brief
+     *
+     * @param[in, out] text String to stem.
+     */
     void operator()(string_typeT & text)
     {
         if (text.length() < 3)
@@ -78,12 +115,12 @@ public:
             return;
         }
 
-        // reset internal data
+        // Reset internal data
         stem<string_typeT>::reset_r_values();
 
         stem<string_typeT>::trim_western_punctuation(text);
 
-        // see where the R1 section begins
+        // See where the R1 section begins
         // R1 is the first consonant after the first vowel
         stem<string_typeT>::find_r1(text, SWEDISH_VOWELS);
         if (stem<string_typeT>::get_r1() == text.length())
@@ -96,7 +133,7 @@ public:
         {
             stem<string_typeT>::set_r1(3);
         }
-        // swedish does not use R2
+        // Swedish does not use R2
 
         step_1(text);
         step_2(text);
@@ -104,7 +141,26 @@ public:
     }
 
 private:
-    //---------------------------------------------
+    /* Private member methods */
+
+    /**
+     * @brief Perform step 1 of the algorithm.
+     *
+     * @param text
+     *
+     * @par Algorithm:
+     *  <b>Step 1:</b>
+     *  Search for the longest among the following suffixes in R1, and perform
+     *   the action indicated.
+     *      - a, arna, erna, heterna, orna, ad, e, ade, ande, arne, are, aste,
+     *      en, anden, aren, heten, ern, ar, er, heter, or, as, arnas, ernas,
+     *      ornas, es, ades, andes, ens, arens, hetens, erns, at, andet, et,
+     *      ast
+     *          - Delete.
+     *      - s
+     *      - Delete if preceded by a valid s-ending.
+     *  (Of course the letter of the valid s-ending is not necessarily in R1).
+     */
     void step_1(string_typeT & text)
     {
         if (stem<string_typeT>::delete_if_is_in_r1(
@@ -520,7 +576,19 @@ private:
             return;
         }
     }
-    //---------------------------------------------
+
+    /**
+     * @brief Perform step 2 of the algorithm.
+     *
+     * @param text
+     *
+     * @par Algorithm:
+     *  <b>Step 2:</b>
+     *  Search for one of the following suffixes in R1, and if found delete the
+     *   last letter.
+     *      - dd, gd, nn, dt, gt, kt, tt
+     *  (For example, friskt -> frisk, fröknarnn -> fröknarn).
+     */
     void step_2(string_typeT & text)
     {
         if (stem<string_typeT>::is_suffix_in_r1(
@@ -586,7 +654,23 @@ private:
             stem<string_typeT>::update_r_sections(text);
         }
     }
-    //---------------------------------------------
+
+    /**
+     * @brief Perform step 3 of the algorithm.
+     *
+     * @param text
+     *
+     * @par Algorithm:
+     *  <b>Step 3:</b>
+     *  Search for the longest among the following suffixes in R1, and perform
+     *   the action indicated.
+     *      - lig, ig, els
+     *          - Delete
+     *      - löst
+     *          - Replace with lös
+     *      - fullt
+     *          - Replace with full
+     */
     void step_3(string_typeT & text)
     {
         if (stem<string_typeT>::is_suffix_in_r1(
@@ -643,8 +727,7 @@ private:
         }
     }
 };
-}  // namespace stemming
 
-/** @}*/
+}  // namespace stemming
 
 #endif  //__SWEDISH_STEM_H__

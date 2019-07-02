@@ -1,13 +1,4 @@
-﻿/**@addtogroup Stemming
-@brief Library for stemming words down to their root words.
-@date 2003-2015
-@copyright Oleander Software, Ltd.
-@author Oleander Software, Ltd.
-@details This program is free software; you can redistribute it and/or modify
-it under the terms of the BSD License.
-* @{*/
-
-#ifndef __FINNISH_STEM_H__
+﻿#ifndef __FINNISH_STEM_H__
 #define __FINNISH_STEM_H__
 
 #include "stemming.hpp"
@@ -1029,8 +1020,7 @@ private:
     // internal data specific to Finnish stemmer
     bool m_step_3_successful;
 };
-}  // namespace stemming
 
-/** @}*/
+}  // namespace stemming
 
 #endif  //__FINNISH_STEM_H__

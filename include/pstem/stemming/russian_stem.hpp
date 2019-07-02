@@ -1,12 +1,3 @@
-/**@addtogroup Stemming
-@brief Library for stemming words down to their root words.
-@date 2003-2015
-@copyright Oleander Software, Ltd.
-@author Oleander Software, Ltd.
-@details This program is free software; you can redistribute it and/or modify
-it under the terms of the BSD License.
-* @{*/
-
 #ifndef __RUSSIAN_STEM_H__
 #define __RUSSIAN_STEM_H__
 
@@ -846,8 +837,7 @@ private:
         }
     }
 };
-}  // namespace stemming
 
-/** @}*/
+}  // namespace stemming
 
 #endif  //__RUSSIAN_STEM_H__

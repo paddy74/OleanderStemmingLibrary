@@ -34,7 +34,8 @@ const wchar_t LOWER_I_HASH = 11;  // vertical tab
 const wchar_t UPPER_U_HASH = 12;  // form feed (new page)
 const wchar_t LOWER_U_HASH = 13;  // carriage return
 
-// Language constants
+/* Language constants */
+
 static const wchar_t FRENCH_VOWELS[] = {
     97,   101,  105,  111,  117,  121,  0xE2, 0xE0, 0xEB, 0xE9, 0xEA, 0xE8,
     0xEF, 0xEE, 0xF4, 0xFB, 0xF9, 65,   69,   73,   79,   85,   89,   0xC2,

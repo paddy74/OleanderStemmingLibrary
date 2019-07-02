@@ -1,12 +1,3 @@
-/**@addtogroup Stemming
-@brief Library for stemming words down to their root words.
-@date 2003-2015
-@copyright Oleander Software, Ltd.
-@author Oleander Software, Ltd.
-@details This program is free software; you can redistribute it and/or modify
-it under the terms of the BSD License.
-* @{*/
-
 #ifndef __PORTUGUESE_STEM_H__
 #define __PORTUGUESE_STEM_H__
 
@@ -2619,8 +2610,7 @@ private:
     bool m_step1_step2_altered;
     size_t m_altered_suffix_index;
 };
-}  // namespace stemming
 
-/** @}*/
+}  // namespace stemming
 
 #endif  //__PORTUGUESE_STEM_H__

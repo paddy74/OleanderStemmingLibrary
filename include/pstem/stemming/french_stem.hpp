@@ -10,7 +10,7 @@ it under the terms of the BSD License.
 #ifndef __FRENCH_STEM_H__
 #define __FRENCH_STEM_H__
 
-#include "stemming.h"
+#include "stemming.hpp"
 
 namespace stemming
 {

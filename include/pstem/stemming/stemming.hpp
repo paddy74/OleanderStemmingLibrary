@@ -3,8 +3,8 @@
 
 #include <algorithm>
 
-#include "../indexing/common_lang_constants.h"
-#include "../indexing/string_util.h"
+#include "../indexing/common_lang_constants.hpp"
+#include "../indexing/string_util.hpp"
 
 namespace stemming
 {

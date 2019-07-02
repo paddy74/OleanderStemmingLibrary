@@ -15,10 +15,10 @@
 #include <stdexcept>
 #include <string>
 
-#include "../utilities/debug_logic.h"
-#include "../utilities/safe_math.h"
-#include "../utilities/utilities.h"
-#include "common_lang_constants.h"
+#include "../utilities/debug_logic.hpp"
+#include "../utilities/safe_math.hpp"
+#include "../utilities/utilities.hpp"
+#include "common_lang_constants.hpp"
 
 namespace string_util
 {

@@ -1,7 +1,6 @@
-#include <pstem/stemming/english_stem.h>
-#include <pstem/stemming/french_stem.h>
-
 #include <iostream>
+#include <pstem/stemming/english_stem.hpp>
+#include <pstem/stemming/french_stem.hpp>
 #include <string>
 
 int main()

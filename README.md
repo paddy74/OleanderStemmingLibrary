@@ -2,7 +2,7 @@
 
 # PStem: Porter Stemming Library
 
-This library allows for stemming words down to their root forms using the Porter Stemming Algorithm. It is a fork of the [Oleander Stemming Library](https://github.com/OleanderSoftware/OleanderStemmingLibrary).
+PStem is a C++ library which allows for stemming words down to their root forms using the Porter Stemming Algorithm. It is a fork of the [Oleander Stemming Library](https://github.com/OleanderSoftware/OleanderStemmingLibrary) which maintains the algorithms with significant improvements for usability.
 
 It supports the following languages:
 
@@ -32,7 +32,7 @@ target_link_libraries(myProject pstem)
 As this is a header-only library, you may also add this library to your project using a relative path:
 
 ```cpp
-#include "relative/path/to/PStem/include/pstem/stemming/english_stem.h"
+#include "relative/path/to/PStem/include/pstem/stemming/english_stem.hpp"
 ```
 
 ### Running an example

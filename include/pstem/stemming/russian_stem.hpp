@@ -10,7 +10,7 @@ it under the terms of the BSD License.
 #ifndef __RUSSIAN_STEM_H__
 #define __RUSSIAN_STEM_H__
 
-#include "stemming.h"
+#include "stemming.hpp"
 
 namespace stemming
 {
